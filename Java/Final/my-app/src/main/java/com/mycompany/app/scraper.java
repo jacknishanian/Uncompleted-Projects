@@ -8,7 +8,7 @@ import org.jboss.resteasy.client.ClientRequest;
 
 public class scraper {
     
-    public List<RifleData> RifleDataList(String id) {
+    public List<Stats> getStats(String name) {
         String result = "";
         
         String steamid = "steamid=" + id + "&";
@@ -27,15 +27,27 @@ public class scraper {
         }
         //System.out.println(result);
         Gson gson = new Gson();
-        RifleDataListRoot myRifleDataList = gson.fromJson(result, RifleDataListRoot.class);
-        return myGameList.response.games;
+        StatsListRoot myStatsList = gson.fromJson(result, StatsListRoot.class);
+        return myStatsList.response.games;
         
     }
     
 }
 
-class stats {
-    playerstats stats;
+class StatlistRoot {
+    StatlistStatlist statlist;
 }
 
+class StatlistStatlist {
+    StatlistStats stats;
+}
+
+class StatlistStats {
+    List<StatlistStats> stat;
+}
+
+class StatlistStat {
+    String name;
+    int value;
+}
 
