@@ -7,10 +7,10 @@ import org.jboss.resteasy.client.ClientRequest;
 
 
 public class scraper {
-    
+
     public List<Stats> getStats(String name) {
         String result = "";
-        
+
         String steamid = "steamid=" + id + "&";
         String query = "http://api.steampowered.com/ISteamUserStats/GetUserStatsForGame/v0002/?"
                 + "appid=730&key=F73E7724099FDD0F60829638F5E7A9FF&steamid="
@@ -29,9 +29,9 @@ public class scraper {
         Gson gson = new Gson();
         StatsListRoot myStatsList = gson.fromJson(result, StatsListRoot.class);
         return myStatsList.response.games;
-        
+
     }
-    
+
 }
 
 class StatlistRoot {
@@ -51,3 +51,4 @@ class StatlistStat {
     int value;
 }
 
+class Gamelist
